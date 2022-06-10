@@ -1,0 +1,33 @@
+[[deployment-transformer]]
+= Payara Server Deployment Transformer
+
+The Deployment Transformer extension integrates the Eclipse Jakarta EE namespace transformer into Payara Server, allowing a user to have their Jakarta EE 8 applications transformed on the fly into the Jakarta EE 10 namespace.
+
+[[installation]]
+== Installation
+
+To install the transformer extension, perform these steps: 
+
+. Download the implementation artifact
+. Drop it into the `${PAYARA_HOME}/glassfish/modules` directory of your Payara Server installation. 
+
+Alternatively, you can build the `deployment-transformer/deployment-transformer-impl` module straight from its GitHub repository (see below) and drop all JARs from the `target/` directory of the extension into the same installation directory.
+
+You can then restart the server to see your extension activated.
+
+TIP: The 'deployment-transformer-api' artifact is already included with Payara Server. You only need to provide an implementation artifact in this case.
+
+[[activation]]
+== Activation
+
+The transformer, once installed, is activated in one of two ways:
+
+* Setting the `fish.payara.deployment.transform.namespace` system property on the DAS and/or any instances to `true`
+* Deploy an application which doesn't use `jakarta.*` classes and uses the legacy `javax.*` equivalents instead.
+
+TIP: When the `fish.payara.deployment.transform.namespace` is set to true, the transformer will remain enabled for all subsequent deployments.
+
+[[see-also]]
+== See Also
+
+* link:https://github.com/payara/transformer[Eclipse Transformer Code Repository]
